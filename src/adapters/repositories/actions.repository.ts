@@ -4,7 +4,7 @@ import { MysqlDatabase } from "../../infrastructure/persistence/mysql/mysql.data
 import { IActionRepository } from "../../domain/repositories/actions.repository.interface";
 import * as Sequelize from 'sequelize'
 import actionModel from '../../infrastructure/persistence/mysql/models/2-actions.models.mysql.db';
-import projectModel from '../../infrastructure/persistence/mysql/models/3-projetos.models.mysql.db'
+import projectModel from '../../infrastructure/persistence/mysql/models/3-projects.models.mysql.db'
 import modelsToEntities from '../../infrastructure/persistence/mysql/helpers/action.modelstoEntities.mysql.DB'
 import entitiesToModels from '../../infrastructure/persistence/mysql/helpers/action.entitiestoModel.mysql.DB'
 
@@ -58,11 +58,16 @@ export class ActionRepository implements IActionRepository {
   }
 
   async updateById(resource: ActionEntity): Promise<ActionEntity | undefined> {
-      let tinytitle = resource.title.replace(/ /g, '-').toLocaleLowerCase();
+      let tinytitle = resource.params!.replace(/ /g, '-').toLocaleLowerCase();
       if(!tinytitle) throw 'Id/Title não fornecido'
-      let actModel = await this._database.read(this._modelAction, tinytitle);
-      const { actionGeneral } = entitiesToModels(resource);
-      await this._database.update(actModel, actionGeneral);
+      let actModel = await this._database.read(this._modelAction, tinytitle, {
+        include: ['project']
+      });
+      const { actionGeneral, projectGeneral } = entitiesToModels(resource);
+      const actionModel = await this._database.update(actModel, actionGeneral);
+      if(projectGeneral){
+        const projectModel = await this._database.update(await actModel.project, projectGeneral)
+      }
       return resource;
   }
 

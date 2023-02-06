@@ -2,10 +2,12 @@ import * as Sequelize from 'sequelize';
 import { MysqlDatabase } from "../mysql.database";
 
 export default MysqlDatabase.getInstance().createModelReference('projects', {
-    idProject: {
-        type: Sequelize.DataTypes.INTEGER,
+    tinysubtitle: {
+        type: Sequelize.DataTypes.STRING,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: false,
+        field: 'tinysubtitle',
+        unique: true
     },
     tinytitle: {
         type: Sequelize.DataTypes.STRING,
@@ -20,7 +22,7 @@ export default MysqlDatabase.getInstance().createModelReference('projects', {
             key: 'tinytitle',
         }
     },
-    title: {
+    subtitle: {
         type: Sequelize.DataTypes.STRING,
         unique: true,
     },
@@ -28,5 +30,5 @@ export default MysqlDatabase.getInstance().createModelReference('projects', {
         type: Sequelize.DataTypes.TEXT,
         allowNull: false,
     },
-    photo: Sequelize.DataTypes.STRING,
+    photoContent: Sequelize.DataTypes.STRING,
 });

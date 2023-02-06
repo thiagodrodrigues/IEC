@@ -9,7 +9,15 @@ export default MysqlDatabase.getInstance().createModel('actions', {
         autoIncrement: false,
         unique: true,
     },
+    title: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+    },
     action: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
+    },
+    coverPhoto: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
     },

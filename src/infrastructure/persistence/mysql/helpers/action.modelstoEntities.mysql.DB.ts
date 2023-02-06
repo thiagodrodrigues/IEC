@@ -6,13 +6,17 @@ export default function (action:any): ActionEntity | undefined {
     if(!action)
     return;
     let actionGeneral: IActionEntity = {
+        title: action.title,
         tinytitle: action.tinytitle,
         action: action.action,
+        coverPhoto: action.coverPhoto,
     };
 
     if(String(actionGeneral.action) == "Projetos"){
-        (actionGeneral as IProjectsEntity).title = action.project.title;
-        (actionGeneral as IProjectsEntity).photo = action.project.photo;
+        (actionGeneral as IProjectsEntity).tinytitle = action.tinytitle;
+        (actionGeneral as IProjectsEntity).subtitle = action.project.subtitle;
+        (actionGeneral as IProjectsEntity).tinysubtitle = action.project.tinysubtitle;
+        (actionGeneral as IProjectsEntity).photoContent = action.project.photoContent;
         (actionGeneral as IProjectsEntity).text = action.project.text;
     }
 

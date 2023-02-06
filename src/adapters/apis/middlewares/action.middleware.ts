@@ -17,11 +17,27 @@ class actionsMiddleware {
         }
     }
 
+    async validateRequiredSubTitleBodyFields(req: express.Request, res: express.Response, next: express.NextFunction){
+        if(req.body.action == "Projetos" && req.body.subtitle) {
+                next();
+        } else {
+            res.status(400).send({error: constantsConfig.ACTIONS.MESSAGES.ERROR.VOID_SUBTITLE});
+        }
+    }
+
     async validateRequiredTitleBodyFields(req: express.Request, res: express.Response, next: express.NextFunction){
-        if(req.body.action == "Projetos" && req.body.title) {
+        if(req.body.title) {
                 next();
         } else {
             res.status(400).send({error: constantsConfig.ACTIONS.MESSAGES.ERROR.VOID_TITLE});
+        }
+    }
+
+    async validateRequiredCoverPhotoBodyFields(req: express.Request, res: express.Response, next: express.NextFunction){
+        if(req.body.action == "Projetos" && req.body.coverPhoto) {
+                next();
+        } else {
+            res.status(400).send({error: constantsConfig.ACTIONS.MESSAGES.ERROR.VOID_COVERPHOTO});
         }
     }
 

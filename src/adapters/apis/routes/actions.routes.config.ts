@@ -20,6 +20,8 @@ export class ActionsRoutes extends CommonRoutesConfig {
                 coursesMiddleware.validateRequiredActionBodyFields, // Verifica se o campo Ação foi preenchido
                 coursesMiddleware.validateRequiredTextBodyFields, // Verifica se o campo Texto foi preenchido
                 coursesMiddleware.validateRequiredTitleBodyFields, // Verifica se o campo Título foi preenchido
+                coursesMiddleware.validateRequiredSubTitleBodyFields, //Valida Subtitulo
+                coursesMiddleware.validateRequiredCoverPhotoBodyFields, // Verifica se colocou Foto de Capa
                 coursesMiddleware.validateTitleRepeated, // Valida se o título já existe
                 actionsController.createAction // Cria novo curso
             )
@@ -32,6 +34,8 @@ export class ActionsRoutes extends CommonRoutesConfig {
                 coursesMiddleware.validateRequiredActionBodyFields, // Verifica se o campo Ação foi preenchido
                 coursesMiddleware.validateRequiredTextBodyFields, // Verifica se o campo Texto foi preenchido
                 coursesMiddleware.validateRequiredTitleBodyFields, // Verifica se o campo Título foi preenchido
+                coursesMiddleware.validateRequiredSubTitleBodyFields, //Valida Subtitulo
+                coursesMiddleware.validateRequiredCoverPhotoBodyFields, // Verifica se colocou Foto de Capa
                 coursesMiddleware.validateTitleRepeated, // Valida se o título já existe
                 actionsController.updateAction // Atualiza curso
             )

@@ -18,7 +18,9 @@ export default {
             ERROR: {
                 REQUIRE_LOGIN: `Faça login para continuar.`,
                 VOID_TITLE: `O campo 'Título' deve ser preenchido`,
+                VOID_SUBTITLE: `O campo 'SubTítulo' deve ser preenchido`,
                 VOID_ACTION: `O campo 'Ação' deve ser um valor pré-definido da lista`,
+                VOID_COVERPHOTO: `O campo 'Foto de Capa' deve ser preenchido`,
                 VOID_TEXT: `O campo 'Texto' deve ser preenchido`,
                 UNAUTHORIZED: `Usuário logado deve ser um administrador para executar esta função. Não autorizado.`,
                 TITLE_ALREADY_EXISTS: `Título {USER_ID} já existe existe`,

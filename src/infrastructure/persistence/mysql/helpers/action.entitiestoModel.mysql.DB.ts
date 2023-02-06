@@ -3,18 +3,24 @@ import { ActionEntity } from "../../../../domain/entities/actions/type.actions.e
 
 export default function (action: ActionEntity ){
     let newTitle = action.title.replace(/ /g, "-").toLowerCase();
+    const upperTitle = action.title.toUpperCase();
     const actionGeneral = {
+        coverPhoto: action.coverPhoto,
         tinytitle: newTitle,
+        title: upperTitle,
         action: action.action,
     };
 
     let projectGeneral = undefined;
     if(String(actionGeneral.action) == "Projetos"){
+        const upperSubTitle = action.subtitle.toUpperCase();
+        let newsubTitle = action.subtitle.replace(/ /g, "-").toLowerCase();
         projectGeneral = {
-            title: action.title,
             tinytitle: newTitle,
+            subtitle: upperSubTitle,
+            tinysubtitle: newsubTitle,
             text: action.text,
-            photo: action.photo,
+            photoContent: action.photoContent,
         }
     };
 

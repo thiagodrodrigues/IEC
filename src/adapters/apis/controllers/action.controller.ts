@@ -85,7 +85,15 @@ class ActionsController {
                     error: constantsConfig.ACTIONS.MESSAGES.ERROR.REQUIRE_LOGIN
                 });
             } else {     
-                    const actionModel = await updateActionsUsecase.execute(req.body);
+                    const actionModel = await updateActionsUsecase.execute({
+                        title: req.body.title,
+                        tinytitle: req.body.tinytitle,
+                        subtitle: req.body.subtitle,
+                        text: req.body.text,
+                        action: req.body.action,
+                        coverPhoto: req.body.coverPhoto,
+                        params: req.params.tinytitle
+                    });
                     log(actionModel);
                     res.status(200).send(actionModel);
                 }

@@ -3,10 +3,12 @@ import * as Sequelize from 'sequelize';
 export default {
     up: (queryInterface: Sequelize.QueryInterface) => {
         return queryInterface.createTable('projects', {
-            idProject: {
-                type: Sequelize.DataTypes.INTEGER,
+            tinysubtitle: {
+                type: Sequelize.DataTypes.STRING,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: false,
+                field: 'tinysubtitle',
+                unique: true
             },
             tinytitle: {
                 type: Sequelize.DataTypes.STRING,
@@ -17,7 +19,7 @@ export default {
                     key: 'tinytitle',
                 }
             },
-            title: {
+            subtitle: {
                 type: Sequelize.DataTypes.STRING,
                 unique: true,
             },
@@ -25,7 +27,7 @@ export default {
                 type: Sequelize.DataTypes.TEXT,
                 allowNull: false,
             },
-            photo: Sequelize.DataTypes.STRING,
+            photoContent: Sequelize.DataTypes.STRING,
         });
     },
     down: (queryInterface: Sequelize.QueryInterface) => {

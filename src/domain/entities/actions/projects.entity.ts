@@ -1,8 +1,8 @@
 import { IActionEntity } from "./actions.entity";
 
 export interface IProjectsEntity extends IActionEntity {
-    title: string,
-    tinytitle: string,
+    subtitle: string,
+    tinysubtitle?: string,
     text: string,
-    photo?: string,
+    photoContent?: string,
 }
